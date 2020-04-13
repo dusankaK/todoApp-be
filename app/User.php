@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Todo;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -41,5 +42,9 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function todos() {
+        return $this->hasMany(Todo::class);
     }
 }
