@@ -25,4 +25,6 @@ Route::post('login', 'UserController@login');
         Route::get('user', 'UserController@getAuthenticatedUser');
         Route::post('me', 'UserController@me');
         Route::post('logout', 'UserController@logout');
+        Route::get('todos', 'TodoController@index');
+        Route::delete('todos/{id}', 'TodoController@destroy');
     });
