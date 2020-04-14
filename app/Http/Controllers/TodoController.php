@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\TodoRequest;
 use App\Todo;
 use App\User;
-use JWTAuth;
 
 class TodoController extends Controller
 {
@@ -37,9 +37,11 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TodoRequest $request)
     {
-        //
+        $user = auth()->user();
+        $todo = Todo::create($request->all() + ['user_id' => $user->id]);
+        
     }
 
     /**
