@@ -52,7 +52,7 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        //
+        return Todo::findOrFail($id);
     }
 
     /**
@@ -73,10 +73,16 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(TodoRequest $request, $id)
+    {   
+        $user = auth()->user();
+        $todo = Todo::where('user_id', $user->id)->find($id);
+        $todo->update($request->all());
+
+        return $todo;
+
     }
+    
 
     /**
      * Remove the specified resource from storage.
