@@ -18,7 +18,7 @@ class CreateTodosTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('description')->nullable();
-            $table->boolean('completed')->default(false);
+            $table->boolean('completed');
             $table->string('priority');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

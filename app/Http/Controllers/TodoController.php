@@ -73,7 +73,7 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TodoRequest $request, $id)
+    public function update(Request $request, $id)
     {   
         $user = auth()->user();
         $todo = Todo::where('user_id', $user->id)->find($id);
